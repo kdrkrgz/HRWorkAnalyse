@@ -1,0 +1,18 @@
+:host ::ng-deep .main{
+    margin:10px 10px 10px 10px
+}
+
+:host ::ng-deep .main-page{
+    margin-top: 20px;
+}
+
+:host ::ng-deep .breadcumb {
+    display: inline
+}
+
+:host ::ng-deep .add { color:white; background-color: green;}
+:host ::ng-deep .update { color:white; background-color:yellow;}
+:host ::ng-deep .delete{ color:white;background-color: #e02c2c;}
+:host ::ng-deep .mat-list-base {padding-top: 0px im !important;}
+:host ::ng-deep .list-description-area {margin: auto;}
+:host ::ng-deep .right{float:right}

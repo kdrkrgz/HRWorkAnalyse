@@ -1,0 +1,21 @@
+
+<div class="breadcumb">
+  <button class="breadcumb-button" mat-button>{{employeeData?.firstName}} {{employeeData?.lastName}} </button>
+  <button class="breadcumb-button add right" mat-raised-button (click)="openPhoneCallAddDialog()">Telefon Görüşme Süresi Ekle</button>
+
+</div>
+<hr>
+
+<div class="main-page">
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let phoneCall of phoneCallData">
+    <span>Kurum İçi Görüşme Süresi (dk): <b>{{phoneCall.inCompany}}</b></span>
+    </mat-list-option>
+    <mat-list-option *ngFor="let phoneCall of phoneCallData">
+      <span>Kurum Dışı Görüşme Süresi (dk): <b>{{phoneCall.outCompany}}</b></span>
+    </mat-list-option>
+    <mat-list-option *ngFor="let phoneCall of phoneCallData">
+      <span><b>Toplam Görüşme Süresi (dk): {{phoneCall.outCompany + phoneCall.inCompany }}</b></span>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

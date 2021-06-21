@@ -1,0 +1,91 @@
+ 
+   <div class="breadcumb">
+    <button class="breadcumb-title-button" mat-button> {{ titleData?.titleName }}  İş Analizi </button>
+    <button (click)="exportToExcel()" class="breadcumb-button right" color="primary" mat-raised-button> Excele Aktar </button>
+    <button (click)="print()" class="breadcumb-button right" color="primary" mat-raised-button> Yazdır</button>
+
+
+  </div>
+  <hr>
+  <!-- {{titleData?.titleName}}  -->
+  <div class="export-excel">
+ <table >
+  <tr>
+    <th>Görev Adı</th>
+    <th>Tekrar Sayısı</th>
+    <th>Harcanan Süre</th>
+    <th>Toplam Süre</th>
+  </tr>
+  <tr *ngFor="let mission of missionDetailData">
+    <td>{{mission.missionName}}</td>
+    <td>{{mission.annualRepeatCount | number:'1.1-1'}}</td>
+    <td>{{mission.missionTime | number:'1.1-1'}}</td>
+    <td class="bold">{{mission.totalTime | number:'1.1-1'}}</td>
+  </tr>
+  <tr>
+    <td>Telefon Konuşma Süresi</td>
+    <td>1</td>
+    <td>{{totalPhoneCallTime}}</td>
+    <td><b>{{totalPhoneCallTime |number:'1.1-1'}}</b></td>
+  </tr>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>Toplam Süre</b></td>
+      <td><b>{{annualMissionTime | number:'1.1-1'}}</b></td>
+    </tr>
+  </tfoot>
+</table>
+<hr>
+<br>
+<h3 class="bold">İş Yükü</h3>
+<table>
+  <tr>
+    <th>Yıllık Toplam İş Yükü (saat)</th>
+    <th>Yıllık Toplam İş Yükü (dakika)</th>
+  </tr>
+  <tr>
+    <td >{{fixedAnnualMissionTime/60 | number:'1.1-1'}} saat</td>
+    <td class="attention">{{fixedAnnualMissionTime | number:'1.1-1'}} dakika</td>
+  </tr>
+</table>
+<hr>
+<br>
+<h3 class="bold">İzinler</h3>
+<table >
+  <tr>
+    <th>Yıllık Ortalama İzin Kullanım Süresi</th>
+    <th>Yıllık Ortalama Çalışma Süresi (gün)</th>
+    <th>Yıllık Ortalama Çalışma Süresi (saat)</th>
+    <th>Yıllık Ortalama Çalışma Süresi (dakika)</th>
+    <th>Yıllık iş hacmi</th>
+
+  </tr>
+  <tr>
+    <td >{{totalPermitDays}} gün</td>
+    <td >{{365 - totalPermitDays}} gün</td>
+    <td >{{(365 - totalPermitDays)*24 | number:'1.1-1'}} saat</td>
+    <td >{{((365 - totalPermitDays)*24)*60 | number:'1.1-1'}} dakika</td>
+    <td class="attention">{{(((365 - totalPermitDays)*24)*60) * employeeData.length | number:'1.1-1' }} dakika</td>
+  </tr>
+</table>
+
+</div>
+  <!-- <hr>
+  <div *ngIf="employeeData">Personel Sayısı: {{ employeeData.length }}</div>
+<hr>
+  <p>İş Yükü (dakika): {{annualMissionTime}} </p>
+  <p>İş Yükü (saat): {{annualMissionTime/60}} </p>
+  <hr>
+  <p>Ortalama Yıllık İzin Süresi (gün): {{totalPermitDays}}</p>
+  <p>Yıllık ortalama çalışma günü: {{365 - totalPermitDays}}</p>
+  <p>Yıllık ortalama çalışma saati: {{(365 - totalPermitDays)*24}}</p>
+  <p>Yıllık ortalama çalışma dakikası: {{((365 - totalPermitDays)*24)*60}}</p>
+<hr>
+<p>Yıllık İş Hacmi: {{(((365 - totalPermitDays)*24)*60) * employeeData.length }} </p> -->
+<hr>
+<h3><b>Birimdeki Mevcut Personel Sayısı: {{ employeeData.length }}</b></h3>
+<h3><b>Analiz Sonucunda Olması Gereken Personel Sayısı: {{ fixedAnnualMissionTime / (((365 - totalPermitDays)*24)*60) | number:'1.1-1' }}</b></h3>
+<h3 style="color: red;"><b *ngIf="(fixedAnnualMissionTime / (((365 - totalPermitDays)*24)*60)) > employeeData.length">Eksik Personel Sayısı: {{(fixedAnnualMissionTime / (((365 - totalPermitDays)*24)*60)) - employeeData.length | number:'1.1-1'}} </b></h3>
+<h3 style="color: green;"><b *ngIf="(fixedAnnualMissionTime / (((365 - totalPermitDays)*24)*60)) < employeeData.length">Fazla Personel Sayısı: {{(fixedAnnualMissionTime / (((365 - totalPermitDays)*24)*60)) - employeeData.length | number:'1.1-1'}} </b></h3>

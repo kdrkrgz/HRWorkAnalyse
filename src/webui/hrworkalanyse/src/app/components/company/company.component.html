@@ -1,0 +1,12 @@
+<div class="breadcumb col-md-10">
+  <button class="breadcumb-button" mat-button>Şirketlerim</button>
+</div>
+<hr>
+
+<div class="main-page">
+<mat-selection-list  [multiple]="false">
+  <mat-list-option *ngFor="let company of CompanyData">
+  <span routerLink="/departments/{{ company.id }}">{{company.companyName}}</span>
+  </mat-list-option>
+</mat-selection-list>
+</div>

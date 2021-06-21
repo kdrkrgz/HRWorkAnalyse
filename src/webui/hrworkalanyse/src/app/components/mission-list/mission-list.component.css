@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+.main{
+    margin:10px 10px 10px 10px;
+}
+.breadcumb-button {
+    display: flex;
+}
+ .main-page{
+    margin-top: 20px;
+}
+
+
+.add { color:white; background-color: green;}
+.update { color:white; background-color:yellow;}
+.save {color:white; background-color: teal;}
+.delete{ color:white;background-color: #e02c2c;}
+.mat-list-base {padding-top: 0px im !important;}
+.list-description-area {margin: auto;}
+.right{margin-left:auto;}
+#bottom-button-bar {margin-top: 25px;}

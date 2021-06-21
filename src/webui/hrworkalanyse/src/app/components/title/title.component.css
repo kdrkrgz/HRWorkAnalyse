@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+button{ margin-left: 10px;}  
+
+.analyze-button {
+  color: white;
+  background-color: #ffc107;
+}
+
+.permit-list-button {
+  color: white;
+  background-color: #1e92e2;
+}
+
+.employee-list-button {
+  color: white;
+  background-color: #156f15;
+}

@@ -1,0 +1,21 @@
+<div class="car-add-form">
+  <form [formGroup]="employeeAddForm">
+    <div >
+      <mat-form-field  appearance="legacy">
+        <mat-label>Personel Adı</mat-label>
+        <input matInput formControlName="firstName" required>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field  appearance="legacy">
+        <mat-label>Personel Soyadı</mat-label>
+        <input matInput formControlName="lastName" required>
+      </mat-form-field>
+    </div>
+  </form>
+  <div mat-dialog-actions>
+
+    <button mat-stroked-button color="warn" (click)="onNoClick()">İptal</button>
+    <button mat-stroked-button [mat-dialog-close]="" (click)="addEmployee()" cdkFocusInitial color="primary">Kaydet</button>
+  </div>

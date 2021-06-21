@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media print {
+    @page { 
+      size: auto;
+      margin: 0mm;
+    }
+    body { 
+      margin: 2cm;
+      margin-left: -200px;
+    }
+
+    .main {
+        padding-right: -20px !important;
+    }
+
+    #navbar, 
+    #navbar, 
+    #toolbar, 
+    #footer, 
+    .sidenav,
+    .not-printable,
+    .mat-toolbar,
+    .mat-toolbar-row,
+    .breadcumb-button
+    {
+        display:none !important;
+    } 
+  }

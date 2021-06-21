@@ -1,0 +1,21 @@
+<div class="car-add-form">
+  <form [formGroup]="phoneCallAddForm">
+    <div >
+      <mat-form-field  appearance="legacy">
+        <mat-label>Şirket içi görüşme süresi (dakika)</mat-label>
+        <input matInput formControlName="inCompany" required>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field  appearance="legacy">
+        <mat-label>Şirket dışı görüşme süresi (dakika)</mat-label>
+        <input matInput formControlName="outCompany" required>
+      </mat-form-field>
+    </div>
+  </form>
+  <div mat-dialog-actions>
+
+    <button mat-stroked-button color="warn" (click)="onNoClick()">İptal</button>
+    <button mat-stroked-button [mat-dialog-close]="" (click)="addPhoneCall()" cdkFocusInitial color="primary">Kaydet</button>
+  </div>

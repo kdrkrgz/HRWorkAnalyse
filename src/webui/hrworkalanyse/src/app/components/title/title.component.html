@@ -1,0 +1,70 @@
+<div class="breadcumb">
+  <button class="breadcumb-button" mat-button>{{departmentData?.departmentName}} </button>
+  <button class="breadcumb-button add right" mat-raised-button (click)="openTitleAddDialog()" color="green">Unvan Ekle</button>
+</div>
+<hr>
+
+<div class="main-page">
+
+
+  <mat-form-field>
+    <input matInput matNativeControl (keyup)="tableSearch($event)" placeholder="Aramak İstediğiniz Unvanı Giriniz" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Title Names Column -->
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef> Sıra</th>
+      <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- Title Names Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Unvan</th>
+      <td mat-cell *matCellDef="let row"> {{row.titleName}} </td>
+    </ng-container>
+    
+        <!-- Add Buttons Column -->
+        <ng-container matColumnDef="lists">
+          <th mat-header-cell *matHeaderCellDef> Listeler </th>
+          <td mat-cell *matCellDef="let row">
+            <button class="employee-list-button" routerLink="/employees/{{ row.id }}" mat-mini-fab color="basic" matTooltip="Personel Listesi">
+              <mat-icon>format_list_numbered</mat-icon>
+            </button>
+            <button class="permit-list-button" routerLink="/permits/{{ row.id }}" mat-mini-fab color="basic" matTooltip="İzin Listesi">
+              <mat-icon>sailing</mat-icon>
+            </button>
+            <button (click)="openMissionListDialog(row.id)" mat-mini-fab color="primary" matTooltip="İş Listesi">
+              <mat-icon>post_add</mat-icon>
+            </button>
+            <button class="analyze-button" routerLink="/missions/{{ row.id }}" mat-mini-fab color="basic" matTooltip="İş Analizi">
+              <mat-icon>insights</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    <!-- operations Column -->
+    <ng-container matColumnDef="operations">
+      <th mat-header-cell *matHeaderCellDef>İşlemler</th>
+      <td mat-cell *matCellDef="let row">
+        <button (click)="openMissionListDialog(row.id)" mat-mini-fab color="warn" matTooltip="Unvanı Düzenle">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="removeTitle(row.id)" mat-mini-fab color="warn" matTooltip="Unvanı Kaldır">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">"{{input.value}}" Aramasına ilişkin sonuç bulunamadı.</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20, 40, 50]"></mat-paginator>
+
+</div>

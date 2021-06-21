@@ -1,0 +1,22 @@
+<div class="breadcumb">
+  <button class="breadcumb-button" mat-button>{{companyData?.companyName}}</button>
+  <button class="breadcumb-button add right" mat-raised-button (click)="openDepartmentAddDialog()" color="green">Departman Ekle</button>
+</div>
+<hr>
+
+<div class="main-page">
+  <mat-selection-list [multiple]="false">
+    <mat-list-option class="main-mat-list-option" *ngFor="let department of DepartmentData">
+      <div class="row">
+        <div class="col-md-10 list-description-area">
+          <span routerLink="/titles/{{ department.id }}">{{department.departmentName}}</span>
+        </div>
+        <div class="col-md-2 list-button-area">
+          <span><button class="delete" mat-mini-fab><mat-icon>delete</mat-icon></button></span>
+          <span><button class="delete" mat-mini-fab><mat-icon>update</mat-icon></button></span>
+
+        </div>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+</div>
